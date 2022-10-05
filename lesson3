@@ -1,0 +1,80 @@
+# Задайте список из нескольких чисел. Напишите программу, которая найдёт сумму элементов списка, стоящих на нечётной позиции.
+
+import random
+lenght_list = int(input("Введите длину списка: "))
+list_numbers = []
+for i in range (lenght_list):
+    new_numbers = random.randrange(0,10)
+    list_numbers.append(new_numbers)
+print(list_numbers)
+sum_numbers = 0
+for i in range(1, len(list_numbers), 2):
+    sum_numbers+=list_numbers[i]
+print(f'Сумма элементов стоящих на нечетных позициях {sum_numbers}')
+
+
+#Напишите программу, которая найдёт произведение пар чисел списка. Парой считаем первый и последний элемент, второй и предпоследний и т.д.
+number_list1 = [7, 8, 10, 2, 22]
+
+
+def product_pairs_numbers(number_list):
+    even_len = 0
+    new_list = []
+    if not len(number_list)%2 == 0:
+        even_len = int((len(number_list)+1)/2)
+    else:
+        even_len = int(len(number_list)/2)
+    for i in range(0,even_len):
+        new_list.append(number_list[i]*(number_list[len(number_list)-i-1]))
+    return new_list
+
+
+new_list = product_pairs_numbers(number_list1)
+print(f'{number_list1} => {new_list}')
+
+
+# Задайте список из вещественных чисел. Напишите программу, которая найдёт разницу между максимальным и минимальным значением дробной части элементов.
+
+import random
+lenght_list = int(input("Введите длину списка: "))
+list_numbers = []
+new_numbers = 0
+for i in range (lenght_list):
+    new_numbers = round(random.uniform(0.00,10.00), 3)
+    list_numbers.append(new_numbers)
+print(list_numbers)
+max_number = list_numbers[0]%1
+min_number = list_numbers[0]%1
+list_numbers_2 = [num % 1 for num in list_numbers]
+print(round(max(list_numbers_2), 3))
+print(round(min(list_numbers_2), 3))
+print(round(max(list_numbers_2) - min(list_numbers_2), 3))
+
+#Напишите программу, которая будет преобразовывать десятичное число в двоичное
+num_n = int(input("Введите число: "))
+print(bin(num_n)[2:])
+
+#Задайте число. Составьте список чисел Фибоначчи, в том числе для отрицательных индексов.
+
+num_n = int(input("Введите количество чисел Фибоначчи: "))
+list_num = []
+temp = 0
+count = 0
+for i in range(0, num_n+1):
+    list_num.append(temp)
+    if temp == 0:
+        temp = 1
+    temp += list_num[i-1]
+negativ_list = []
+count = len(list_num)-1
+j = 0
+for i in range(len(list_num)):
+    if list_num[i] != 0 and i%2 == 0:
+        negativ_list.append(list_num[i]*-1)
+    elif i%2 != 0:
+        negativ_list.append(list_num[i])
+negativ_list = negativ_list[::-1]
+list_merge = negativ_list + list_num
+print(list_merge)
+
+
